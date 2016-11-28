@@ -16,6 +16,6 @@
 
 function alfa = computeApproximationCoefficients(G, F)
 % Rozwiazanie ukladu rownan G * alfa = F
-alfa = G / F;
+alfa = G \ F;
 end
 
