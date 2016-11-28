@@ -22,7 +22,7 @@ function varargout = approximationGUI(varargin)
 
 % Edit the above text to modify the response to help approximationGUI
 
-% Last Modified by GUIDE v2.5 28-Nov-2016 21:27:27
+% Last Modified by GUIDE v2.5 28-Nov-2016 21:43:14
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -114,4 +114,63 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton3 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+pointsData = get(handles.dataTable, 'Data');
+x = pointsData(:, 1);
+f = pointsData(:, 2);
 
+pointsCount = str2double(get(handles.pointsCountEdit, 'String'));
+if pointsCount <= 0
+    pointsCount = 500;
+end
+paddingMultiplier = str2double(get(handles.paddingMultiplierEdit, 'String'));
+if (paddingMultiplier < 0)
+    paddingMultiplier = 0;
+end
+
+plotApproximation(x, f, pointsCount, paddingMultiplier);
+
+
+
+function pointsCountEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to pointsCountEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of pointsCountEdit as text
+%        str2double(get(hObject,'String')) returns contents of pointsCountEdit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function pointsCountEdit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to pointsCountEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+
+function paddingMultiplierEdit_Callback(hObject, eventdata, handles)
+% hObject    handle to paddingMultiplierEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of paddingMultiplierEdit as text
+%        str2double(get(hObject,'String')) returns contents of paddingMultiplierEdit as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function paddingMultiplierEdit_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to paddingMultiplierEdit (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
