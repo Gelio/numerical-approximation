@@ -47,8 +47,10 @@ approximatedValues = fOpt(plotX);
 
 % Naniesienie wartosci na wykres
 figure;
+grid on;
 plot(x, f, 'r.', 'MarkerSize', 10);
 hold on;
+grid on;
 plot(plotX, approximatedValues);
 
 % Opis wykresu
