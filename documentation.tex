@@ -172,17 +172,29 @@
 		\item Dla 4 punktów pomiarowych aproksymacja jest dokładna (staje się interpolacją). Dla większej ilości punktów nie ma takiej zależności.
 		\item Im więcej punktów pomiarowych i im większe moduły zmian między nimi, tym aproksymacja jest gorsza.
 	\end{enumerate}
-
 	
 	
 	
+	\section{Funkcja do testowania metody}
+	Funkcja \texttt{plotApproximation(x, f, pointsCount, paddingMultiplier)} umożliwia łatwe testowanie metody. Oblicza ona element optymalny, a następnie wyświetla wykres elementu optymalnego oraz nanosi na niego punkty pomiarowe.
 	
+	Obszar, na jakim rysowany jest wykres jest powiększony o $paddingMultiplier * (\max_{i \in {1, \dots, m}} x_i - \min_{i \in {1, \dots, m}} x_i)$ w celu zobrazowania elementu optymalnego również poza zakresem punktów pomiarowych. Domyślna wartość $paddingMultiplier = \frac{1}{6}$.
 	
-	\section{Skrypt do testowania}
-	\textbf{TODO}
+	Argumenty przyjmowane przez tą funkcję opisane są w pliku \textit{plotApproximation.m} (nad nagłówkiem funkcji).
+	
+	Przykładowe wywołanie funkcji:
+	\texttt{plotApproximation([0 1 2 3], [5 6 8 -5])}
+	
 	
 	\section{Interfejs graficzny}
-	\textbf{TODO}
+	Do metody został dołączony interfejs graficzny umożliwiający łatwe wprowadzanie punktów pomiarowych, zmianę parametrów (współczynnik powiększenia obszaru, a także ilość punktów wewnątrz obszaru, na których zostanie narysowany wykres) i dokonanie z tymi danymi aproksymacji.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=1]{images/gui.png}
+		\caption{Interfejs graficzny}
+		\label{GUI}
+	\end{figure}
 	
 	
 	
