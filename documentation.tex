@@ -18,6 +18,77 @@
 	\section{Zadanie}
 	{\Large Temat \textbf{4}, zadanie \textbf{46}:}\\
 	Wzory empiryczne. Baza: $1$, $x$, $x^2$, $\sin x$. Graficzne przedstawienie punktów pomiarowych i funkcji przybliżającej.
+	
+	Niech $f: \mathbb{R} \to \mathbb{R}$ będzie funkcją aproksymowaną,
+	$m \in \mathbb{R}$,
+	$x_1, x_2, \dots, x_m \in \mathbb{R}$
+	oraz $f_1, f_2, \dots, f_m \in \mathbb{R}$ będą wartościami funkcji aproksymowanej w punktach $x_i$ ($f_i = f(x_i), i = 1, 2, \dots, m$).
+	
+	Niech $g_1, g_2, \dots, g_n: \mathbb{R} \to \mathbb{R}$ będą funkcjami z bazy.
+	
+	Należy znaleźć element optymalny
+	$$f^* = \alpha_1 g_1(x) + \alpha_2 g_2(x) + \dots + \alpha_n g_n(x)$$,
+	który minimalizuje wyrażenie
+	$$H(\alpha_1, \alpha_2, \dots, \alpha_n) = \sum_{i=1}^{m} \Big(f_i - f^*(x_i)\Big)^2$$
+	Zakładamy $m \geq n$.
+	
+	Po obliczeniu pochodnej funkcji $H$ ze względu na dowolną zmienną i przyrównaniu jej do zera (ponieważ szukamy ekstremum) otrzymujemy następującą równość:
+	\begin{equation}
+		\forall_{k = 1, \dots, n} \hspace{10pt}
+		\sum_{j=1}^{n} \alpha_j \sum_{i=1}^{m} g_j(x_i) g_k(x_i) = \sum_{i=1}^{m} f_i g_k(x_i)
+		\label{rownosc-pochodnej-trudna}
+	\end{equation}
+	Zauważmy, że $\sum_{i=1}^{m} g_j(x_i) g_k(x_i) = \langle g_j, g_k \rangle$ oraz 
+	$\sum_{i=1}^{m} f_i g_k(x_i) = \langle f_i, g_k \rangle$. Zatem równość (\ref{rownosc-pochodnej-trudna}) można zapisać jako:
+	\begin{equation}
+		\forall_{k = 1, \dots, n} \hspace{10pt}
+		\sum_{j=1}^{n} \alpha_j \langle g_j, g_k \rangle = \langle f_i, g_k \rangle
+		\label{rownosc-pochodnej-trudna}
+	\end{equation}
+	
+	Otrzymaliśmy więc układ równań normalnych $G \alpha = F$, gdzie
+	\begin{equation*}
+		\alpha =
+		\begin{bmatrix}
+			\alpha_1 \\
+			\alpha_2 \\
+			\vdots   \\
+			\alpha_n
+		\end{bmatrix}
+	\end{equation*}
+	\begin{equation*}
+		G =
+		\begin{bmatrix}
+			\langle g_1, g_1 \rangle & \langle g_1, g_2 \rangle & \dots  & \langle g_1, g_n \rangle \\
+			\langle g_2, g_1 \rangle & \langle g_2, g_2 \rangle & \dots  & \langle g_2, g_n \rangle \\
+			\vdots                   & \vdots                   & \ddots & \vdots                   \\
+			\langle g_n, g_1 \rangle & \langle g_n, g_2 \rangle & \dots  & \langle g_n, g_n \rangle
+		\end{bmatrix}
+	\end{equation*}
+	\begin{equation*}
+		F =
+		\begin{bmatrix}
+			\langle f_1, g_1 \rangle \\
+			\langle f_2, g_2 \rangle \\
+			\vdots                   \\
+			\langle f_n, g_n \rangle
+		\end{bmatrix}
+	\end{equation*}
+	Po jego rozwiązaniu otrzymujemy współczynniki $\alpha_i$, a mamy całą postać elementu optymalnego $f^*$.
+
+
+
+	W przypadku naszego zadania mamy:
+	\begin{align*}
+	g_1(x) &= 1\\
+	g_2(x) &= x\\
+	g_3(x) &= x^2\\
+	g_4(x) &= \sin x
+	\end{align*}
+	Ilość punktów pomiarowych $n$ nie może być mniejsza niż 4 ($n \geq 4$). Wtedy element optymalny $f^*$ ma postać:
+	$$
+	f^*(x) = \alpha_1 + \alpha_2 x + \alpha_3 x^2 + \alpha_4 \sin x
+	$$
 
 	
 	\section{Opis metody}
