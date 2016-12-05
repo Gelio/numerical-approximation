@@ -153,7 +153,12 @@
 	
 	
 	\section{Przykłady}
-	Przykłady zostały wygenerowane poprzez obliczenie danej funkcji aproksymowanej $f$ w węzłach, a następnie zaburzenie tych wartości poprzez dodanie szumu. Dopiero na tych zaburzonych wartościach wykonujemy aproksymację.
+	Przykład 1 został wygenerowany poprzez obliczenie danej funkcji aproksymowanej $f$ w węzłach, a następnie zaburzenie tych wartości poprzez dodanie szumu. Dopiero na tych zaburzonych wartościach wykonano aproksymację.
+	
+	W przykładach 2-4 zostały użyte dokładne wartości w węzłach dla funkcji aproksymowanej $f$.
+	
+	W przykładach 5-6 użyte zostały wartości pomiarowe, nie mające powiązania z żadną funkcją.
+	
 	
 	\begin{enumerate}[label=\textbf{Przykład \arabic*}]
 		\item
@@ -189,18 +194,84 @@
 		
 		Metoda dokładnie aproksymuje funkcję z bazy przestrzeni elementu optymalnego, jeżeli dane nie są zaburzone.
 		
+		\item
+		Funkcja aproksymowana: $f(x) = x^3$.\\
+		Brak zaburzenia wartości.\\
+		Węzły: $x \in \{-1, 1, 2, 4, 5, 6\}$
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{images/example-3.png}
+		\end{figure}
+		
+		Metoda dobrze aproksymuje funkcję w okolicy węzłów, dla $x < -1$ błąd aproksymacji jest coraz większy.
+		
+		\item
+		Funkcja aproksymowana: $f(x) = \cos x + \tan x + x^3$.\\
+		Brak zaburzenia wartości.\\
+		Węzły: $x \in \{-\frac{\pi}{3} -\frac{\pi}{4}, \frac{\pi}{6}, 0, \frac{\pi}{6}, \frac{\pi}{4}, \frac{\pi}{3} \}$
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{images/example-4.png}
+		\end{figure}
+		
+		Dla funkcji składającej się z sumy funkcji spoza bazy elementu optymalnego metoda wykonała dość dobrą aproksymację w przedziale, na którym występują węzły. Poza tym przedziałem ($|x| > \frac{\pi}{3}$) błąd aproksymacji wzrasta.
+		
+		\item
+		Węzły:
+		\begin{align*}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				i & $x_i$ & $f_i$ \\ \hline
+				1 &  1  & 40  \\ \hline
+				2 &  2  & 10  \\ \hline
+				3 &  3  & -4  \\ \hline
+				4 &  4  & 10  \\ \hline
+			\end{tabular}
+		\end{align*}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{images/example-5.png}
+		\end{figure}
+		
+		Gdy liczba węzłów jest równa liczbie funkcji z bazy (4), to aproksymacja staje się interpolacją, ponieważ w węzłach wartości elementu optymalnego są równe wartościom pomiarowym.
+		
+		\item
+		Węzły:
+		\begin{align*}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				i & $x_i$ & $f_i$ \\ \hline
+				1 &   1   &  50   \\ \hline
+				2 &   2   &  -20  \\ \hline
+				3 &   3   &  18   \\ \hline
+				4 &   4   &  -25  \\ \hline
+				5 &   5   &  10   \\ \hline
+				6 &   6   &  70   \\ \hline
+				7 &   7   &  -10  \\ \hline
+			\end{tabular}
+		\end{align*}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{images/example-6.png}
+		\end{figure}
+		
+		W przypadku dużych zmianach między wartościami kolejnych węzłów aproksymacja nie jest dokładna.
+		
 	\end{enumerate}
-	
-	
 	
 	
 	
 	
 	\section{Wnioski}
 	\begin{enumerate}
-		\item Element optymalny w tym przypadku odwzorowuje dokładnie funkcje z bazy (gdy dane nie są zaburzone).
-		\item Dla 4 punktów pomiarowych aproksymacja jest dokładna (staje się interpolacją). Dla większej ilości punktów nie ma takiej zależności.
-		\item Im więcej punktów pomiarowych i im większe moduły zmian między nimi, tym aproksymacja jest gorsza.
+		\item Element optymalny w tym przypadku odwzorowuje dokładnie funkcje z bazy (gdy dane nie są zaburzone) (przykład 2).
+		\item Dla 4 punktów pomiarowych aproksymacja jest dokładna (staje się interpolacją). Dla większej ilości punktów nie ma takiej zależności (przykład 5).
+		\item Im więcej punktów pomiarowych, pomiędzy którymi wstępują większe moduły zmian wartości, tym aproksymacja jest gorsza (przykład 6).
+		\item Aproksymacja jest zazwyczaj dość dobra w przedziale, na którym występują węzły. Poza nim, jak można się zresztą spodziewać, błąd aproksymacji wzrasta (przykłady 3, 4).
 	\end{enumerate}
 	
 	
@@ -217,7 +288,7 @@
 	
 	Dodatkowo aby ułatwić sprawdzanie tej metody aproksymacji dla funkcji został stworzony skrypt \texttt{approximateFunction.m}. Zawiera on obliczenie wartości danej funkcji $f$, a następnie dodanie \textit{szumu} do każdego węzła aproksymacji:
 	$$
-	f_i = rand(S_{max} - S_{min}) +  f(x_i) * (rand(P_{max} - P_{min}) + P_{min})
+	f_i = S_{min} + rand(S_{max} - S_{min}) +  f(x_i) * (P_{min} + rand(P_{max} - P_{min}))
 	$$
 	gdzie $S_{min}, S_{max} \in \mathbb{R}$ są stałymi, które zostaną dodane do każdej obliczonej wartości funkcji, $P_{min}, P_{max} \in \mathbb{R}$ oznaczają zakres procentowy przez który zostaną pomnożone obliczone wartości funkcji.
 	
