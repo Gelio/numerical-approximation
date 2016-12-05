@@ -1,4 +1,4 @@
-% Skrypt do testowania zadania aproksymacji
+% Skrypt do testowania zadania aproksymacji (dla konkretnych punktów)
 %
 % Autor: Grzegorz Rozdzialik (D4, gr. lab. 2)
 
