@@ -163,6 +163,7 @@
 			\item mnożnik z zakresu $<\frac{1}{2}, 2>$
 			\item dodanie stałej z zakresu $<0, 10>$
 		\end{itemize}
+		Węzły: $x \in \{-1, 1, 2, 4, 5, 6\}$
 		
 		\begin{figure}[H]
 			\centering
@@ -174,7 +175,19 @@
 			\includegraphics[scale=0.8]{images/example-1b.png}
 		\end{figure}
 	
-		W zależności od wylosowanego szumu aproksymacja dostosowuje się do węzłów aproksymacji i jest dość dokładna.
+		Dokładność aproksymacji zależy głównie od wylosowanego szumu. Element optymalny dość dobrze aproksymuje węzły, jednakże ze względu na duże zaburzenie wartości w węzłach nie aproksymuje on dobrze funkcji wejściowej $f(x) = x^2$.
+		
+		\item
+		Funkcja aproksymowana: $f(x) = x^2$.\\
+		Brak zaburzenia wartości.\\
+		Węzły: $x \in \{-1, 1, 2, 4, 5, 6\}$
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.8]{images/example-2.png}
+		\end{figure}
+		
+		Metoda dokładnie aproksymuje funkcję z bazy przestrzeni elementu optymalnego, jeżeli dane nie są zaburzone.
 		
 	\end{enumerate}
 	
@@ -185,7 +198,7 @@
 	
 	\section{Wnioski}
 	\begin{enumerate}
-		\item Element optymalny w tym przypadku odwzorowuje dokładnie funkcje z bazy.
+		\item Element optymalny w tym przypadku odwzorowuje dokładnie funkcje z bazy (gdy dane nie są zaburzone).
 		\item Dla 4 punktów pomiarowych aproksymacja jest dokładna (staje się interpolacją). Dla większej ilości punktów nie ma takiej zależności.
 		\item Im więcej punktów pomiarowych i im większe moduły zmian między nimi, tym aproksymacja jest gorsza.
 	\end{enumerate}
