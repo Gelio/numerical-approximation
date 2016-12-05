@@ -3,9 +3,9 @@
 % Autor: Grzegorz Rozdzialik (D4, gr. lab. 2)
 
 % *Konfiguracja*
-f = @(x)(x.^2);
+f = @(x)(cos(x) + x.^3 + tan(x));
 % Argumenty punktow pomiarow
-x = [-1 1 2 4 5 6];
+x = [-pi/3 -pi/4 -pi/6 0 pi/6 pi/4 pi/3];
 
 % Ilosc punktow na wykresie
 pointsCount = 500;
@@ -30,12 +30,12 @@ y = f(x);
 if maxNoiseConstant == minNoiseConstant
     noiseConstants = maxNoiseConstant;
 else
-    noiseConstants = randi((maxNoiseConstant - minNoiseConstant), size(y));
+    noiseConstants = minNoiseConstant + randi((maxNoiseConstant - minNoiseConstant), size(y));
 end
 if maxNoiseMultiplier == minNoiseMultiplier
     noiseMultipliers = maxNoiseMultiplier;
 else
-    noiseMultipliers = randi((maxNoiseMultiplier - minNoiseMultiplier) * 100, size(y)) / 100 + minNoiseMultiplier;
+    noiseMultipliers = minNoiseMultiplier + randi((maxNoiseMultiplier - minNoiseMultiplier) * 100, size(y)) / 100;
 end
 yWithNoise = y .* noiseMultipliers + noiseConstants;
 
