@@ -185,6 +185,14 @@
 	Przykładowe wywołanie funkcji:
 	\texttt{plotApproximation([0 1 2 3], [5 6 8 -5])}
 	
+	Dodatkowo aby ułatwić sprawdzanie tej metody aproksymacji dla funkcji został stworzony skrypt \texttt{approximateFunction.m}. Zawiera on obliczenie wartości danej funkcji $f$, a następnie dodanie \textit{szumu} do każdego węzła aproksymacji:
+	$$
+	f_i = rand(S_{max} - S_{min}) +  f(x_i) * (rand(P_{max} - P_{min}) + P_{min})
+	$$
+	gdzie $S_{min}, S_{max} \in \mathbb{R}$ są stałymi, które zostaną dodane do każdej obliczonej wartości funkcji, $P_{min}, P_{max} \in \mathbb{R}$ oznaczają zakres procentowy przez który zostaną pomnożone obliczone wartości funkcji.
+	
+	Dzięki temu można faktycznie sprawdzić poprawność aproksymacji dla zaburzonych danych.
+	
 	
 	\section{Interfejs graficzny}
 	Do metody został dołączony interfejs graficzny umożliwiający łatwe wprowadzanie punktów pomiarowych, zmianę parametrów (współczynnik powiększenia obszaru, a także ilość punktów wewnątrz obszaru, na których zostanie narysowany wykres) i dokonanie z tymi danymi aproksymacji.
