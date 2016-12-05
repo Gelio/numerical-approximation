@@ -48,14 +48,15 @@ approximatedValues = fOpt(plotX);
 % Naniesienie wartosci na wykres
 figure;
 grid on;
-plot(x, f, 'r.', 'MarkerSize', 10);
+plot(x, f, 'r.', 'MarkerSize', 10, 'DisplayName', 'Punkty pomiarowe');
 hold on;
 grid on;
-plot(plotX, approximatedValues);
+plot(plotX, approximatedValues, 'DisplayName', 'Element optymalny (funkcja aproksymuj¹ca)');
 
 % Opis wykresu
 title('Aproksymacja dyskretna z baz¹ 1, x, x^2, sin x');
-legend('Punkty pomiarowe', 'Element optymalny (funkcja aproksymuj¹ca)');
+%legend('Punkty pomiarowe', 'Element optymalny (funkcja aproksymuj¹ca)');
+legend('show');
 xlabel('x - argumenty');
 ylabel('y - wartoœci funkcji');
 xlim([min(plotX) max(plotX)]);
