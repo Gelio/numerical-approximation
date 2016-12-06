@@ -288,7 +288,7 @@
 	
 	Dodatkowo aby ułatwić sprawdzanie tej metody aproksymacji dla funkcji został stworzony skrypt \texttt{approximateFunction.m}. Zawiera on obliczenie wartości danej funkcji $f$, a następnie dodanie \textit{szumu} do każdego węzła aproksymacji:
 	$$
-	f_i = S_{min} + rand(S_{max} - S_{min}) +  f(x_i) * (P_{min} + rand(P_{max} - P_{min}))
+	f_i = rand(S_{min}, S_{max}) +  f(x_i) * rand(P_{min}, P_{max})
 	$$
 	gdzie $S_{min}, S_{max} \in \mathbb{R}$ są stałymi, które zostaną dodane do każdej obliczonej wartości funkcji, $P_{min}, P_{max} \in \mathbb{R}$ oznaczają zakres procentowy przez który zostaną pomnożone obliczone wartości funkcji.
 	
