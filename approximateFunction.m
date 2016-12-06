@@ -30,12 +30,12 @@ y = f(x);
 if maxNoiseConstant == minNoiseConstant
     noiseConstants = maxNoiseConstant;
 else
-    noiseConstants = minNoiseConstant + randi((maxNoiseConstant - minNoiseConstant), size(y));
+    noiseConstants = randi([minNoiseConstant maxNoiseConstant], size(y));
 end
 if maxNoiseMultiplier == minNoiseMultiplier
     noiseMultipliers = maxNoiseMultiplier;
 else
-    noiseMultipliers = minNoiseMultiplier + randi((maxNoiseMultiplier - minNoiseMultiplier) * 100, size(y)) / 100;
+    noiseMultipliers = minNoiseMultiplier + randi([minNoiseMultiplier maxNoiseMultiplier] * 100, size(y)) / 100;
 end
 yWithNoise = y .* noiseMultipliers + noiseConstants;
 
